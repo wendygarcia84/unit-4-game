@@ -61,6 +61,10 @@ $(document).ready(function() {
           // Enable attack button
 
   // ----------- ATTACK BUTTON ------------- //
+  $( ".fight" ).on("click", function () {
+    alert("CLICK!");
+  
+  });
 
   // Check if player and oponent are chosen, otherwise do nothing
   // Oponent loses oponentHP according to player's current attackPower

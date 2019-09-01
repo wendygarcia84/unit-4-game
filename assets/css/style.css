@@ -4,6 +4,7 @@ body {
 
 h1 {
     color: blue;
+    margin: 0;
 }
 
 h3 {
@@ -12,12 +13,12 @@ h3 {
 }
 
 h4 {
-    margin: 6px;
+    margin: 3px;
 }
 .character {
     float: left;
     width: 150px;
-    height: 130px;
+    height:120px;
     margin: 2px;
 
     text-align: center;
@@ -55,4 +56,8 @@ h4 {
 
 .fight-section {
     clear: both;
+}
+
+section {
+    height: 140px;
 }
