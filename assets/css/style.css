@@ -28,3 +28,7 @@ h1 {
 .character p {
     margin: 3px;
 }
+
+.enemies-section {
+    clear: both;
+}

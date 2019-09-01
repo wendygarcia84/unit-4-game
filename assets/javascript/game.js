@@ -10,13 +10,12 @@
 
 //Display 3 enemies on an area bellow, in a red background each
 $(document).ready(function() {
-  var playerVar;
   var enemiesVar;
   $( ".character" ).on("click", function () {
     //remove element from area, keeping its value in a variable
     enemiesVar = $(this).siblings().not("h3").detach();
     console.log(enemiesVar);
-    
+    $(".enemies-section").append(enemiesVar);
   });
 
 
