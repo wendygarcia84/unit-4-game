@@ -5,6 +5,10 @@ body {
 h1 {
     color: blue;
 }
+
+h3 {
+    color: white;
+}
 .character {
     float: left;
     width: 150px;
@@ -20,6 +24,10 @@ h1 {
     border-color: green;
 }
 
+.enemies {
+    background-color: rgb(255, 80, 80);
+}
+
 .character img {
     width: 130px;
     margin: 0;
@@ -30,5 +38,9 @@ h1 {
 }
 
 .enemies-section {
+    clear: both;
+}
+
+.oponent-section {
     clear: both;
 }

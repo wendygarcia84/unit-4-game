@@ -7,15 +7,15 @@
   // Create variables playerChosen = true; playerHP, attackPower, basePower and assign them to the current player's values
 
   // The rest of the characters become "enemies"
-
-//Display 3 enemies on an area bellow, in a red background each
 $(document).ready(function() {
   var enemiesVar;
   $( ".character" ).on("click", function () {
     //remove element from area, keeping its value in a variable
     enemiesVar = $(this).siblings().not("h3").detach();
-    console.log(enemiesVar);
+    $(enemiesVar).addClass("enemies");
+    //Display 3 enemies on an area bellow, in a red background each
     $(".enemies-section").append(enemiesVar);
+
   });
 
 
