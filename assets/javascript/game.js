@@ -9,24 +9,36 @@
   // The rest of the characters become "enemies"
 
 //Display 3 enemies on an area bellow, in a red background each
-  // Ask the user to choose an oponent
-    // chooseOponent function 
-        //Create variables oponentHP and counterAttackPower
-        // OponentChosen = true
-        //Display oponent in an area below in a black bg
-        // Enable attack button
-
-// ----------- ATTACK BUTTON ------------- //
-
-// Check if player and oponent are chosen, otherwise do nothing
-// Oponent loses oponentHP according to player's current attackPower
-// Player gains attackPower by adding basePower to it
-// ----Couter Attack ---//
-// Player loses playerHP according to enemie's counterAttackPower
-// Check if playerHP >= 0 you lose! restart all the game
-  // if oponent >= 0, 
-    // Hide oponent, 
-    // oponenChoosen = false, player choses oponent (chooseOponent)
+$(document).ready(function() {
+  var playerVar;
+  var enemiesVar;
+  $( ".character" ).on("click", function () {
+    //remove element from area, keeping its value in a variable
+    enemiesVar = $(this).siblings().not("h3").detach();
+    console.log(enemiesVar);
+    
+  });
 
 
+
+    // Ask the user to choose an oponent
+      // chooseOponent function 
+          //Create variables oponentHP and counterAttackPower
+          // OponentChosen = true
+          //Display oponent in an area below in a black bg
+          // Enable attack button
+
+  // ----------- ATTACK BUTTON ------------- //
+
+  // Check if player and oponent are chosen, otherwise do nothing
+  // Oponent loses oponentHP according to player's current attackPower
+  // Player gains attackPower by adding basePower to it
+  // ----Couter Attack ---//
+  // Player loses playerHP according to enemie's counterAttackPower
+  // Check if playerHP >= 0 you lose! restart all the game
+    // if oponent >= 0, 
+      // Hide oponent, 
+      // oponenChoosen = false, player choses oponent (chooseOponent)
+
+});
 
