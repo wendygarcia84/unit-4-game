@@ -9,19 +9,35 @@
   // The rest of the characters become "enemies"
 $(document).ready(function() {
   var enemiesVar;
-  $( ".character" ).on("click", function () {
+  var oponentVar;
+  var playerChosen = false;
+  var oponentChosen = false;
+
+  
+  $( ".player" ).on("click", function () {
+    if (!playerChosen) { 
     //remove element from area, keeping its value in a variable
     enemiesVar = $(this).siblings().not("h3").detach();
     $(enemiesVar).addClass("enemies");
     //Display 3 enemies on an area bellow, in a red background each
     $(".enemies-section").append(enemiesVar);
-
+    playerChosen = true;
+    } else if (!oponentChosen) { 
+      //remove element from area, keeping its value in a variable
+      oponentVar = $(this).detach();
+      $(oponentVar).addClass("oponent");
+      //Display 3 enemies on an area bellow, in a red background each
+      $(".oponent-section").append(oponentVar);
+      oponentChosen = true;
+      console.log(oponentVar);
+    }
   });
-
-
 
     // Ask the user to choose an oponent
       // chooseOponent function 
+
+//-------THIS CODE DOESN'T WORK-----------//
+
           //Create variables oponentHP and counterAttackPower
           // OponentChosen = true
           //Display oponent in an area below in a black bg

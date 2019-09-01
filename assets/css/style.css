@@ -27,7 +27,10 @@ h3 {
 .enemies {
     background-color: rgb(255, 80, 80);
 }
-
+ .oponent {
+     background-color: black;
+     color: white;
+ }
 .character img {
     width: 130px;
     margin: 0;
