@@ -5,7 +5,7 @@
 
 $(document).ready(function() {
   var enemiesVar;
-  var oponentVar;
+  var opponentVar;
   var deadOpponent;
   var deathsHolder;
 
@@ -14,15 +14,15 @@ $(document).ready(function() {
   var playerBP;
   var playerAP;
 
-  var oponentHP;
+  var opponentHP;
   var counterAttackPower;
 
   var playerChosen = false;
-  var oponentChosen = false;
+  var opponentChosen = false;
 
   
   $( ".player" ).on("click", function () {
-    if (!playerChosen && !oponentChosen) { 
+    if (!playerChosen && !opponentChosen) { 
 
     // User chooses a character, and it becomes "player"
   // Create variables playerChosen = true; playerHP, attackPower, basePower and assign them to the current player's values
@@ -41,19 +41,19 @@ $(document).ready(function() {
     $(".enemies-section").append(enemiesVar);
     playerChosen = true;
 
-    } else if (playerChosen && !oponentChosen) { 
-      //create oponent
-      oponentHP = parseInt($(this).attr("health-points"));
+    } else if (playerChosen && !opponentChosen) { 
+      //create opponent
+      opponentHP = parseInt($(this).attr("health-points"));
       counterAttackPower = parseInt($(this).attr("counter-attack-power"));
 
       //remove element from area, keeping its value in a variable
-      oponentVar = $(this).detach();
-      $(oponentVar).addClass("oponent");
+      opponentVar = $(this).detach();
+      $(opponentVar).addClass("opponent");
 
-      //Display oponent in "oponent section" in a red bgc
-      $(".oponent-section").append(oponentVar);
-      oponentChosen = true;
-      console.log(`oponent HP ${oponentHP}, CAP ${counterAttackPower}`);
+      //Display opponent in "opponent section" in a red bgc
+      $(".opponent-section").append(opponentVar);
+      opponentChosen = true;
+      console.log(`opponent HP ${opponentHP}, CAP ${counterAttackPower}`);
 
     }
   });
@@ -62,21 +62,22 @@ $(document).ready(function() {
 
   // ----------- ATTACK BUTTON ------------- //
   $( ".fight" ).on("click", function () {
-    if (playerChosen && oponentChosen) {
+    if (playerChosen && opponentChosen) {
   
         console.log(`Player attacked with ${playerAP} attack power`);
-        oponentHP -= playerAP;
-        console.log(`Oponent new HP is ${oponentHP}`);
+        opponentHP -= playerAP;
+        console.log(`Opponent new HP is ${opponentHP}`);
         playerAP += playerBP;
         playerHP -= counterAttackPower;
-        console.log(`oponent attacked with ${counterAttackPower} CAP`);
+        console.log(`opponent attacked with ${counterAttackPower} CAP`);
         console.log(`Player's new HP is ${playerHP}`);
 
-        if (oponentHP <= 0 || playerHP <=0) {
-          deadOpponent = $(".oponent").detach();
+        if (opponentHP <= 0 || playerHP <=0) {
+          deadOpponent = $(".opponent").detach();
           // deathsHolder.append(deadOpponent);
           console.log(deathsHolder);
-          alert('OPONENT 1 IS DEAD! CHOSE A NEW OPONENT!');
+          opponentChosen = false;
+          alert('OPPONENT 1 IS DEAD! CHOSE A NEW OPPONENT!');
         }
     }
   
