@@ -8,7 +8,6 @@ $(document).ready(function() {
   var opponentVar;
   var deadOpponent;
   var deathsHolder;
-
   
   var playerHP;
   var playerBP;
@@ -19,6 +18,8 @@ $(document).ready(function() {
 
   var playerChosen = false;
   var opponentChosen = false;
+
+  var deathsCountdown = 3;
 
   
   $( ".player" ).on("click", function () {
@@ -62,7 +63,13 @@ $(document).ready(function() {
 
   // ----------- ATTACK BUTTON ------------- //
   $( ".fight" ).on("click", function () {
-    if (playerChosen && opponentChosen) {
+    if (deathsCountdown <= 0 || playerHP <= 0) {
+      console.log("DEAD PEOPLE CAN'T FIGHT, RESTART THE GAME");
+      return;
+    } else if (!playerChosen || !opponentChosen) {
+      console.log("CHOOSE YOUR CHARACTER AND OPPONENT FIRST");
+      return;
+    } else if (playerChosen && opponentChosen) {
   
         console.log(`Player attacked with ${playerAP} attack power`);
         opponentHP -= playerAP;
@@ -72,12 +79,19 @@ $(document).ready(function() {
         console.log(`opponent attacked with ${counterAttackPower} CAP`);
         console.log(`Player's new HP is ${playerHP}`);
 
-        if (opponentHP <= 0 || playerHP <=0) {
-          deadOpponent = $(".opponent").detach();
+        if (opponentHP <= 0) {
+          deathsCountdown --;
+          deadOpponent = $(".opponent").detach(); //try +=
+          if (deathsCountdown <= 0) {
+            console.log("YOU WON!! Restet the game");
+            return;
+          }
           // deathsHolder.append(deadOpponent);
-          console.log(deathsHolder);
+          console.log(deathsHolder + "OPPONENT IS DEAD CHOOSE A NEW ONE");
           opponentChosen = false;
-          alert('OPPONENT 1 IS DEAD! CHOSE A NEW OPPONENT!');
+        } else if (playerHP <=0) {
+          console.log("You're dead!! RESET THE GAME")
+          return;
         }
     }
   
