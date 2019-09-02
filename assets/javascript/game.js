@@ -4,11 +4,14 @@
   //ask the user to make a choice
 
 $(document).ready(function() {
+  //HTML ELEMENTS
   var enemiesVar;
   var opponentVar;
-  var deadOpponent;
   var deathsHolder;
+  var deadOpponent;
+  var status = $(".status");
   
+  //GAME VALUES
   var playerHP;
   var playerBP;
   var playerAP;
@@ -16,6 +19,7 @@ $(document).ready(function() {
   var opponentHP;
   var counterAttackPower;
 
+  // VERIFIERS AND COUNT DOWNS
   var playerChosen = false;
   var opponentChosen = false;
 
