@@ -10,6 +10,7 @@ h1 {
 }
 
 h3 {
+    clear: both;
     margin-bottom: 2px;
 }
 

@@ -9,7 +9,8 @@ $(document).ready(function() {
   var opponentVar;
   var deathsHolder;
   var deadOpponent;
-  var status = $(".status");
+  var charactersVar = $(".character");
+  var resetButton = $("<button>").text("Reset Game!").addClass("reset");
   
   //GAME VALUES
   var playerHP;
@@ -22,11 +23,12 @@ $(document).ready(function() {
   // VERIFIERS AND COUNT DOWNS
   var playerChosen = false;
   var opponentChosen = false;
+  var gameOver = false;
 
   var deathsCountdown = 3;
 
   
-  $( ".player" ).on("click", function () {
+  $("body").on("click", ".player", function () {
   
     if (!playerChosen && !opponentChosen) { 
 
@@ -46,8 +48,11 @@ $(document).ready(function() {
     //Display 3 enemies on an area bellow, in a red background each
     $(".enemies-section").append(enemiesVar);
     playerChosen = true;
-
-    } else if (playerChosen && !opponentChosen) { 
+    }  
+  });
+  
+  $("body").on("click", ".enemies", function () {
+    if (playerChosen && !opponentChosen) { 
       //create opponent
       opponentHP = parseInt($(this).attr("health-points"));
       counterAttackPower = parseInt($(this).attr("counter-attack-power"));
@@ -66,7 +71,7 @@ $(document).ready(function() {
 
   // ----------- ATTACK BUTTON ------------- //
   $( ".fight" ).on("click", function () {
-    if (deathsCountdown <= 0 || playerHP <= 0) {
+    if (gameOver) {
       $(".status").text("DEAD PEOPLE CAN'T FIGHT, RESTART THE GAME");
       return;
     } else if (!playerChosen || !opponentChosen) {
@@ -83,21 +88,40 @@ $(document).ready(function() {
 
         if (opponentHP <= 0) {
           deathsCountdown --;
-          deadOpponent = $(".opponent").detach(); //try +=
+          deadOpponent = $(".opponent").remove();
           if (deathsCountdown <= 0) {
+            gameOver = true;
             $(".status").text("YOU WON!! Restet the game");
+            $(".fight-section").append(resetButton);
             return;
           }
           // deathsHolder.append(deadOpponent);
           $(".status").text("OPPONENT IS DEAD CHOOSE A NEW ONE");
           opponentChosen = false;
-        } else if (playerHP <=0) {
-          $(".status").text("You're DEAD!! RESET THE GAME")
+        } 
+        if (playerHP <=0) {
+          gameOver = true;
+          $(".status").text("You're DEAD!! RESET THE GAME");
+          $(".fight-section").append(resetButton);
           return;
         }
     }
   
   });
 
+  // CHECK FOR BUGS 
+  $("body").on("click", ".reset", function () {
+    console.log("GAME HAS BEN RESET");
+    $(".characters-section, .enemies-section, .opponent-section").empty();
+    $(charactersVar).removeClass("enemies opponent").addClass("player");
+    $(".reset").remove();
+    $(".characters-section").append(charactersVar);
+
+    playerChosen = false;
+    opponentChosen = false;
+    deathsCountdown = 3;
+    gameOver = false;
+
+  });
 });
 
