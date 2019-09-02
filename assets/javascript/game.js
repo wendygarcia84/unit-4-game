@@ -20,7 +20,7 @@ $(document).ready(function() {
 
   
   $( ".player" ).on("click", function () {
-    if (!playerChosen) { 
+    if (!playerChosen && !oponentChosen) { 
 
     // User chooses a character, and it becomes "player"
   // Create variables playerChosen = true; playerHP, attackPower, basePower and assign them to the current player's values
@@ -28,11 +28,9 @@ $(document).ready(function() {
     playerBP = $(this).attr("base-power");
     playerAP = playerBP;
 
-    //-----------SANITY CHECK ---------------///
-    console.log(`HP: ${playerHP}, BP ${playerBP}, AP ${playerAP}`);
-
     //remove element from area, keeping its value in a variable
     enemiesVar = $(this).siblings().not("h3").detach();
+    enemiesVar.removeClass("player");
 
     // The rest of the characters become "enemies"
     $(enemiesVar).addClass("enemies");
@@ -62,7 +60,17 @@ $(document).ready(function() {
 
   // ----------- ATTACK BUTTON ------------- //
   $( ".fight" ).on("click", function () {
-    alert("CLICK!");
+    if (playerChosen && oponentChosen) {
+  
+        console.log(`Player attacked with ${playerAP} attack power`);
+        oponentHP -= playerAP;
+        console.log(`Oponent new HP is ${oponentHP}`);
+        playerAP += playerBP;
+        playerHP -= counterAttackPower;
+        console.log(`oponent attacked with ${counterAttackPower} CAP`);
+        console.log(`Player's new HP is ${playerHP}`);
+        
+    }
   
   });
 
