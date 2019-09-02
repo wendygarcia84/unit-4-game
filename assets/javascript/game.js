@@ -6,6 +6,8 @@
 $(document).ready(function() {
   var enemiesVar;
   var oponentVar;
+  var deadOpponent;
+  var deathsHolder;
 
   
   var playerHP;
@@ -24,8 +26,8 @@ $(document).ready(function() {
 
     // User chooses a character, and it becomes "player"
   // Create variables playerChosen = true; playerHP, attackPower, basePower and assign them to the current player's values
-    playerHP = $(this).attr("health-points");
-    playerBP = $(this).attr("base-power");
+    playerHP = parseInt($(this).attr("health-points"));
+    playerBP = parseInt($(this).attr("base-power"));
     playerAP = playerBP;
 
     //remove element from area, keeping its value in a variable
@@ -41,8 +43,8 @@ $(document).ready(function() {
 
     } else if (playerChosen && !oponentChosen) { 
       //create oponent
-      oponentHP = $(this).attr("health-points");
-      counterAttackPower = $(this).attr("counter-attack-power");
+      oponentHP = parseInt($(this).attr("health-points"));
+      counterAttackPower = parseInt($(this).attr("counter-attack-power"));
 
       //remove element from area, keeping its value in a variable
       oponentVar = $(this).detach();
@@ -69,7 +71,13 @@ $(document).ready(function() {
         playerHP -= counterAttackPower;
         console.log(`oponent attacked with ${counterAttackPower} CAP`);
         console.log(`Player's new HP is ${playerHP}`);
-        
+
+        if (oponentHP <= 0 || playerHP <=0) {
+          deadOpponent = $(".oponent").detach();
+          // deathsHolder.append(deadOpponent);
+          console.log(deathsHolder);
+          alert('OPONENT 1 IS DEAD! CHOSE A NEW OPONENT!');
+        }
     }
   
   });
