@@ -27,6 +27,7 @@ $(document).ready(function() {
 
   
   $( ".player" ).on("click", function () {
+  
     if (!playerChosen && !opponentChosen) { 
 
     // User chooses a character, and it becomes "player"
@@ -58,8 +59,6 @@ $(document).ready(function() {
       //Display opponent in "opponent section" in a red bgc
       $(".opponent-section").append(opponentVar);
       opponentChosen = true;
-      console.log(`opponent HP ${opponentHP}, CAP ${counterAttackPower}`);
-
     }
   });
 
@@ -68,48 +67,37 @@ $(document).ready(function() {
   // ----------- ATTACK BUTTON ------------- //
   $( ".fight" ).on("click", function () {
     if (deathsCountdown <= 0 || playerHP <= 0) {
-      console.log("DEAD PEOPLE CAN'T FIGHT, RESTART THE GAME");
+      $(".status").text("DEAD PEOPLE CAN'T FIGHT, RESTART THE GAME");
       return;
     } else if (!playerChosen || !opponentChosen) {
-      console.log("CHOOSE YOUR CHARACTER AND OPPONENT FIRST");
+      $(".status").text("THERE IS NO DEFENDER!");
       return;
     } else if (playerChosen && opponentChosen) {
   
-        console.log(`Player attacked with ${playerAP} attack power`);
         opponentHP -= playerAP;
         console.log(`Opponent new HP is ${opponentHP}`);
         playerAP += playerBP;
         playerHP -= counterAttackPower;
-        console.log(`opponent attacked with ${counterAttackPower} CAP`);
+        $(".status").text(`Player attacked with ${playerAP} attack power. Opponent attacked with ${counterAttackPower} Counter Attack Power.`);
         console.log(`Player's new HP is ${playerHP}`);
 
         if (opponentHP <= 0) {
           deathsCountdown --;
           deadOpponent = $(".opponent").detach(); //try +=
           if (deathsCountdown <= 0) {
-            console.log("YOU WON!! Restet the game");
+            $(".status").text("YOU WON!! Restet the game");
             return;
           }
           // deathsHolder.append(deadOpponent);
-          console.log(deathsHolder + "OPPONENT IS DEAD CHOOSE A NEW ONE");
+          $(".status").text("OPPONENT IS DEAD CHOOSE A NEW ONE");
           opponentChosen = false;
         } else if (playerHP <=0) {
-          console.log("You're dead!! RESET THE GAME")
+          $(".status").text("You're DEAD!! RESET THE GAME")
           return;
         }
     }
   
   });
-
-  // Check if player and oponent are chosen, otherwise do nothing
-  // Oponent loses oponentHP according to player's current attackPower
-  // Player gains attackPower by adding basePower to it
-  // ----Couter Attack ---//
-  // Player loses playerHP according to enemie's counterAttackPower
-  // Check if playerHP >= 0 you lose! restart all the game
-    // if oponent >= 0, 
-      // Hide oponent, 
-      // oponenChoosen = false, player choses oponent (chooseOponent)
 
 });
 

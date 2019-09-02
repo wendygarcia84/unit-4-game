@@ -1,6 +1,7 @@
 body {
     background-image: url("../images/background.jpg");
     background-size: 100%;
+    color: white;
 }
 
 h1 {
@@ -9,7 +10,6 @@ h1 {
 }
 
 h3 {
-    color: white;
     margin-bottom: 2px;
 }
 
@@ -25,6 +25,7 @@ h4 {
     text-align: center;
 
     background-color: white;
+    color: black;
 
     border-style: solid;
     border-width: 2px;
@@ -58,5 +59,9 @@ h4 {
 }
 
 .fight-section {
+    clear: both;
+}
+
+.status-section {
     clear: both;
 }
