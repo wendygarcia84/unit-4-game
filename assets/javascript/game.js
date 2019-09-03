@@ -87,22 +87,26 @@ $(document).ready(function() {
           $(".opponent :last-child").text(resetOH);
           deadOpponent = $(".opponent").remove();
           $(deadOpponent).removeClass("opponent");
+          //END OF FUNCTION
+
           if (deathsCountdown <= 0) {
             gameOver = true;
 
-            // FUNCTION REMOVE OPPONENT
+            // CALL FUNCTION REMOVE OPPONENT
             resetOH = $(".opponent").attr("health-points");
             $(".opponent :last-child").text(resetOH);
             deadOpponent = $(".opponent").remove();
             $(deadOpponent).removeClass("opponent");
+            //END OF FUNCTION
+
             $(".status").text("YOU WON!! Restet the game");
             $(".fight-section").append(resetButton);
             return;
+          } else {
+            $(".status").text("OPPONENT IS DEAD CHOOSE A NEW ONE");
+            opponentChosen = false;
+            return;
           }
-          // deathsHolder.append(deadOpponent);
-          $(".status").text("OPPONENT IS DEAD CHOOSE A NEW ONE");
-          opponentChosen = false;
-          return;
         }
 
         playerHP -= counterAttackPower;

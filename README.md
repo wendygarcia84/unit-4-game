@@ -1,38 +1,24 @@
-# unit-4-game
-
-When the game starts, the player will choose a character by clicking on the fighter's picture. The player will fight as that character for the rest of the game.
-The player must then defeat all of the remaining fighters. Enemies should be moved to a different area of the screen.
-The player chooses an opponent by clicking on an enemy's picture.
-Once the player selects an opponent, that enemy is moved to a defender area.
-
-The player will now be able to click the attack button.
+Star Wars RPG!!
 
 
-Whenever the player clicks attack, their character damages the defender. The opponent will lose HP (health points). These points are displayed at the bottom of the defender's picture. 
-The opponent character will instantly counter the attack. When that happens, the player's character will lose some of their HP. These points are shown at the bottom of the player character's picture.
 
-The player will keep hitting the attack button in an effort to defeat their opponent.
+Star Wars is a jQuery based game that runs in any browser.
 
-When the defender's HP is reduced to zero or below, remove the enemy from the defender area. The player character can now choose a new opponent.
+The player chooses a character and they must then defeat all of the remaining fighters one by one.
+The opponent character will instantly counter the attack, causing the player's character losing some of their HP. The player wins the game by defeating all enemy characters. The player loses the game the game if their character's HP falls to zero or below.
 
-The player wins the game by defeating all enemy characters. The player loses the game the game if their character's HP falls to zero or below.
+This project might be used by web-development students or any other coder that wants to improve it.
 
-Option 2 Game design notes
+The goal of this project is to show understanding and proficiency of HTML, CSS, JavaScript, and jQuery.
 
-Each character in the game has 3 attributes: Health Points, Attack Power and Counter Attack Power.
 
-Each time the player attacks, their character's Attack Power increases by its base Attack Power. 
 
-For example, if the base Attack Power is 6, each attack will increase the Attack Power by 6 (12, 18, 24, 30 and so on).
+Instructions of how to run and play this game: 
 
-The enemy character only has Counter Attack Power. 
-
-Unlike the player's Attack Points, Counter Attack Power never changes.
-
-The Health Points, Attack Power and Counter Attack Power of each character must differ.
-
-No characters in the game can heal or recover Health Points. 
-
-A winning player must pick their characters wisely by first fighting an enemy with low Counter Attack Power. This will allow them to grind Attack Power and to take on enemies before they lose all of their Health Points. Healing options would mess with this dynamic.
-
-Your players should be able to win and lose the game no matter what character they choose. The challenge should come from picking the right enemies, not choosing the strongest player.
+1) Open the index.html file in any browser. The game will display four characters, each one of them showing their corresponding health points (HP). 
+2) Select your character by clicking in any of the pictures displayed in the Characters Section. The rest of the characters are going to be moved to the "Enemies Section.
+3) Now is time to select your opponent. Do so by clicking in one of the characters in the enemies area.
+4) It's time to fight! Click on the "Fight!" button. Your character damages the defender causing him to lose hp (health points). Your attack power will increment according to your character's base power.
+5) The defender issues an immediate and automatic counter-attack, which power is determined by the base power but it does not increment at any time. Your character's HP is reduce by the opponent counter-attack's power.
+6) You can continue fighting until your character dies (HP is zero or bellow) or the opponent does, in which case you will have to choose a new defender from the enemies area.
+7) If you continue fighting and thefeat all your enemies, you win. After winning or losing you can restart the game and start all over again.
