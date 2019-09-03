@@ -113,6 +113,7 @@ $(document).ready(function() {
         $(".player :last-child").text(playerHP);
         if (playerHP <=0) {
           gameOver = true;
+
           $(".status").text("You're DEAD!! RESET THE GAME");
           $(".fight-section").append(resetButton);
           return;
@@ -125,6 +126,13 @@ $(document).ready(function() {
   $("body").on("click", ".reset", function () {
     var resetPH = $(".player").attr("health-points");
     $(".player :last-child").text(resetPH);
+    
+          //MAKE THIS A FUNCTION REMOVE OPPONENT
+          resetOH = $(".opponent").attr("health-points");
+          $(".opponent :last-child").text(resetOH);
+          deadOpponent = $(".opponent").remove();
+          $(deadOpponent).removeClass("opponent");
+          //END OF FUNCTION
 
     $(".character").remove();
     $(charactersVar).removeClass("enemies opponent").addClass("player");
