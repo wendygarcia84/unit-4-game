@@ -38,7 +38,8 @@ $(document).ready(function() {
   
     //remove element from area, keeping its value in a variable
     enemiesVar = $(this).siblings().not("h3").detach();
-    $(enemiesVar).removeClass("player").addClass("enemies");
+    console.log(enemiesVar);
+    enemiesVar.removeClass("player").addClass("enemies");
 
     //Display 3 enemies on an area bellow, in a red background each
     $(".enemies-section").append(enemiesVar);
@@ -126,7 +127,7 @@ $(document).ready(function() {
   $("body").on("click", ".reset", function () {
     var resetPH = $(".player").attr("health-points");
     $(".player :last-child").text(resetPH);
-    
+
           //MAKE THIS A FUNCTION REMOVE OPPONENT
           resetOH = $(".opponent").attr("health-points");
           $(".opponent :last-child").text(resetOH);
